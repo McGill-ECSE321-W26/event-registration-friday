@@ -4,6 +4,9 @@ package ca.mcgill.ecse321.eventregistration.model;/*PLEASE DO NOT EDIT THIS CODE
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 // line 36 "model.ump"
 // line 66 "model.ump"
 @Entity
@@ -16,17 +19,42 @@ public class Registration
   // MEMBER VARIABLES
   //------------------------
   @Embeddable
-  public class RegistrationId {
-    int pid;
-    int eid;
+  public static class RegistrationId implements Serializable {
+    @ManyToOne
+    Person registrant;
+    @ManyToOne
+    Event event;
 
     public RegistrationId() {
-
+      super();
     }
 
-    public RegistrationId(int pid, int eid) {
-      this.pid = pid;
-      this.eid = eid;
+    public RegistrationId(Person registrant, Event event) {
+      super();
+      this.registrant = registrant;
+      this.event = event;
+    }
+
+    public Person getRegistrant() {
+      return registrant;
+    }
+
+    public Event getEvent() {
+      return event;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+      if (obj instanceof RegistrationId otherId) {
+        return this.registrant.equals(otherId.registrant) && this.event.equals(otherId.event);
+      }
+
+      return false;
+    }
+
+    @Override
+    public int hashCode() {
+      return Objects.hash(this.registrant.getId(), this.event.getId());
     }
   }
 
