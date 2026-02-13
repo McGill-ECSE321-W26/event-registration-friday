@@ -1,5 +1,7 @@
-package ca.mcgill.ecse321.eventregistration.model;/*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.35.0.8043.819096d90 modeling language!*/
+/*PLEASE DO NOT EDIT THIS CODE*/
+/*This code was generated using the UMPLE 1.36.0.8091.03bcab5b3 modeling language!*/
+
+package ca.mcgill.ecse321.eventregistration.model;
 
 
 import jakarta.persistence.Entity;
@@ -23,15 +25,12 @@ public class InPersonEvent extends Event
   //------------------------
   // CONSTRUCTOR
   //------------------------
+  public InPersonEvent() { super(); }
 
-  public InPersonEvent(int aId, String aName, Date aDate, Time aStartTime, Time aEndTime, int aRegistrationLimit, String aAddress)
+  public InPersonEvent(String aName, Date aDate, Time aStartTime, Time aEndTime, int aRegistrationLimit, String aAddress)
   {
-    super(aId, aName, aDate, aStartTime, aEndTime, aRegistrationLimit);
+    super(aName, aDate, aStartTime, aEndTime, aRegistrationLimit);
     address = aAddress;
-  }
-
-  public InPersonEvent() {
-
   }
 
   //------------------------

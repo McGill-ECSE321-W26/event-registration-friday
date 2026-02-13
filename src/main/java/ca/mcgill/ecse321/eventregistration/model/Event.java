@@ -1,8 +1,12 @@
-package ca.mcgill.ecse321.eventregistration.model;/*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.35.0.8043.819096d90 modeling language!*/
+/*PLEASE DO NOT EDIT THIS CODE*/
+/*This code was generated using the UMPLE 1.36.0.8091.03bcab5b3 modeling language!*/
+
+package ca.mcgill.ecse321.eventregistration.model;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -26,6 +30,7 @@ public class Event
 
   //Event Attributes
   @Id
+  @GeneratedValue
   private int id;
   private String name;
   private Date date;
@@ -36,12 +41,10 @@ public class Event
   //------------------------
   // CONSTRUCTOR
   //------------------------
+  public Event() {}
 
-  protected Event() {}
-
-  public Event(int aId, String aName, Date aDate, Time aStartTime, Time aEndTime, int aRegistrationLimit)
+  public Event(String aName, Date aDate, Time aStartTime, Time aEndTime, int aRegistrationLimit)
   {
-    id = aId;
     name = aName;
     date = aDate;
     startTime = aStartTime;

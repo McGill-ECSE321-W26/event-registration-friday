@@ -1,23 +1,18 @@
-package ca.mcgill.ecse321.eventregistration.model;/*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.35.0.8043.819096d90 modeling language!*/
+/*PLEASE DO NOT EDIT THIS CODE*/
+/*This code was generated using the UMPLE 1.36.0.8091.03bcab5b3 modeling language!*/
+
+package ca.mcgill.ecse321.eventregistration.model;
 
 
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 // line 36 "model.ump"
 // line 66 "model.ump"
 @Entity
 public class Registration
 {
-
-  public Registration() {}
-
-  //------------------------
-  // MEMBER VARIABLES
-  //------------------------
   @Embeddable
   public static class RegistrationId implements Serializable {
     @ManyToOne
@@ -42,87 +37,44 @@ public class Registration
     public Event getEvent() {
       return event;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-      if (obj instanceof RegistrationId otherId) {
-        return this.registrant.equals(otherId.registrant) && this.event.equals(otherId.event);
-      }
-
-      return false;
-    }
-
-    @Override
-    public int hashCode() {
-      return Objects.hash(this.registrant.getId(), this.event.getId());
-    }
   }
 
-  //Registration Associations
-  @ManyToOne(fetch=FetchType.LAZY)
-  private Person registrant;
-  @ManyToOne(fetch=FetchType.LAZY)
-  private Event event;
+  //------------------------
+  // MEMBER VARIABLES
+  //------------------------
 
-  //Helper Variables
+  //Registration Associations
   @EmbeddedId
   private RegistrationId rid;
+
+  //Helper Variables
   private int cachedHashCode;
-  private boolean canSetRegistrant;
-  private boolean canSetEvent;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
+  public Registration() {}
 
-  public Registration(Person aRegistrant, Event aEvent)
+  public Registration(RegistrationId rid)
   {
     cachedHashCode = -1;
-    canSetRegistrant = true;
-    canSetEvent = true;
-    if (!setRegistrant(aRegistrant))
-    {
-      throw new RuntimeException("Unable to create Registration due to aRegistrant. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
-    }
-    if (!setEvent(aEvent))
-    {
-      throw new RuntimeException("Unable to create Registration due to aEvent. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
-    }
+    this.rid = rid;
   }
 
   //------------------------
   // INTERFACE
   //------------------------
   /* Code from template association_GetOne */
-  public Person getRegistrant()
-  {
-    return registrant;
-  }
-  /* Code from template association_GetOne */
-  public Event getEvent()
-  {
-    return event;
+  public RegistrationId getRegistrationId() {
+    return rid;
   }
   /* Code from template association_SetUnidirectionalOne */
-  public boolean setRegistrant(Person aNewRegistrant)
+  public boolean setRegistrationId(RegistrationId aNewRid)
   {
     boolean wasSet = false;
-    if (!canSetRegistrant) { return false; }
-    if (aNewRegistrant != null)
+    if (aNewRid != null)
     {
-      registrant = aNewRegistrant;
-      wasSet = true;
-    }
-    return wasSet;
-  }
-  /* Code from template association_SetUnidirectionalOne */
-  public boolean setEvent(Event aNewEvent)
-  {
-    boolean wasSet = false;
-    if (!canSetEvent) { return false; }
-    if (aNewEvent != null)
-    {
-      event = aNewEvent;
+      rid = aNewRid;
       wasSet = true;
     }
     return wasSet;
@@ -135,20 +87,11 @@ public class Registration
 
     Registration compareTo = (Registration)obj;
   
-    if (getRegistrant() == null && compareTo.getRegistrant() != null)
+    if (getRegistrationId() == null && compareTo.getRegistrationId() != null)
     {
       return false;
     }
-    else if (getRegistrant() != null && !getRegistrant().equals(compareTo.getRegistrant()))
-    {
-      return false;
-    }
-
-    if (getEvent() == null && compareTo.getEvent() != null)
-    {
-      return false;
-    }
-    else if (getEvent() != null && !getEvent().equals(compareTo.getEvent()))
+    else if (getRegistrationId() != null && !getRegistrationId().equals(compareTo.getRegistrationId()))
     {
       return false;
     }
@@ -163,32 +106,21 @@ public class Registration
       return cachedHashCode;
     }
     cachedHashCode = 17;
-    if (getRegistrant() != null)
+    if (getRegistrationId() != null)
     {
-      cachedHashCode = cachedHashCode * 23 + getRegistrant().hashCode();
-    }
-    else
-    {
-      cachedHashCode = cachedHashCode * 23;
-    }
-    if (getEvent() != null)
-    {
-      cachedHashCode = cachedHashCode * 23 + getEvent().hashCode();
+      cachedHashCode = cachedHashCode * 23 + getRegistrationId().hashCode();
     }
     else
     {
       cachedHashCode = cachedHashCode * 23;
     }
 
-    canSetRegistrant = false;
-    canSetEvent = false;
     return cachedHashCode;
   }
 
   public void delete()
   {
-    registrant = null;
-    event = null;
+    rid = null;
   }
 
 }
