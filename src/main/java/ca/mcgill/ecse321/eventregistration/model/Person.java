@@ -1,8 +1,11 @@
-package ca.mcgill.ecse321.eventregistration.model;/*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.35.0.8043.819096d90 modeling language!*/
+/*PLEASE DO NOT EDIT THIS CODE*/
+/*This code was generated using the UMPLE 1.36.0.8091.03bcab5b3 modeling language!*/
 
+package ca.mcgill.ecse321.eventregistration.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 import java.sql.Date;
 
@@ -28,14 +31,10 @@ public class Person
   //------------------------
   // CONSTRUCTOR
   //------------------------
+  public Person() {}
 
-  protected Person() {
-
-  }
-
-  public Person(int aId, String aName, String aEmail, String aPassword, Date aCreationDate)
+  public Person(String aName, String aEmail, String aPassword, Date aCreationDate)
   {
-    id = aId;
     name = aName;
     email = aEmail;
     password = aPassword;

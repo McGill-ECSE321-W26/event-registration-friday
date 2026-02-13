@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface RegistrationRepository extends CrudRepository<Registration, Registration.RegistrationId> {
-    Registration findRegistrationByrId(Registration.RegistrationId key);
+    Registration findRegistrationByRid(Registration.RegistrationId key);
 
-    List<Registration> findRegistrationByrIdRegistrantOrderByEvent(int pid);
+    List<Registration> findRegistrationsByRidRegistrantIdOrderByRidEventId(int pid);
 }
