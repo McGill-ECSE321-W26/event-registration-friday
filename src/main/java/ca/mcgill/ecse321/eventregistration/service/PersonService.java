@@ -5,12 +5,15 @@ import ca.mcgill.ecse321.eventregistration.dto.PersonResponseDto;
 import ca.mcgill.ecse321.eventregistration.model.Person;
 import ca.mcgill.ecse321.eventregistration.repository.PersonRepository;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.sql.Date;
 
 @Service
+@Validated
 public class PersonService {
     private PersonRepository personRepository;
 
@@ -20,7 +23,7 @@ public class PersonService {
     }
 
     @Transactional
-    public PersonResponseDto createPerson(PersonCreationRequestDto personCreationRequestDto) {
+    public PersonResponseDto createPerson(@Valid PersonCreationRequestDto personCreationRequestDto) {
         Person person = new Person(
                 personCreationRequestDto.getName(),
                 personCreationRequestDto.getEmail(),
