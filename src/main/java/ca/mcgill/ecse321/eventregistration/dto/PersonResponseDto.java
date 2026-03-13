@@ -7,6 +7,8 @@ public class PersonResponseDto {
     private String name;
     private String email;
 
+    public PersonResponseDto() {} // Needed by Jackson to deserialize JSON
+
     public PersonResponseDto(Person person) {
         this.id = person.getId();
         this.name = person.getName();
