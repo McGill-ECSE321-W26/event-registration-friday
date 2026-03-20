@@ -21,17 +21,16 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	runtimeOnly 'org.postgresql:postgresql'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.boot:spring-boot-resttestclient'
-	testImplementation 'org.springframework.boot:spring-boot-starter-restclient'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	// API docs
+	implementation 'org.springframework.boot:spring-boot-starter-restclient'
+	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.2'
-	annotationProcessor 'com.github.therapi:therapi-runtime-javadoc-scribe:0.15.0'
 	implementation 'com.github.therapi:therapi-runtime-javadoc:0.15.0'
+	annotationProcessor 'com.github.therapi:therapi-runtime-javadoc-scribe:0.15.0'
+	runtimeOnly 'org.postgresql:postgresql'
+	testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-restclient-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
