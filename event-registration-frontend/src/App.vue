@@ -13,4 +13,19 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style scoped></style>
+<style scoped>
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 12px 24px;
+  background: #000;
+}
+
+nav a {
+  color: #aaa;
+}
+
+nav a:hover {
+  color: #fff;
+}
+</style>
